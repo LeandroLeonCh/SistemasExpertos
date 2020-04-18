@@ -1,0 +1,42 @@
+(deffacts hechos-iniciales
+(tiene-pelos)
+(tiene-pesunias)
+(tiene-rayas-negras)
+)
+
+(defrule mamifero-1
+(tiene-pelos)
+=>
+(assert (es-mamifero))
+)
+(defrule mamifero-2
+(da-leche)
+=>
+(assert (es_mamifero))
+)
+
+(defrule ungulado-1
+(es-mamifero)
+(tiene-pesunias)
+=>
+(assert (es-ungulado))
+)
+(defrule ungulado-2
+(es-mamifero)
+(rumia)
+=>
+(assert (es-ungulado))
+)
+(defrule jirafa
+(es-ungulado)
+(tiene-cuello-llargo)
+=>
+(assert (es-jirafa))
+)
+(defrule cebra
+(es-ungulado)
+(tiene-rayas-negras)
+=>
+(assert (es-cebra))
+)
+

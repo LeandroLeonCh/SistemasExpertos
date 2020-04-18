@@ -1,0 +1,15 @@
+;; SERIE FIBONACI
+(deffunction fibo (?d)
+(bind ?x(integer 0))
+(bind ?y(integer 1))
+(printout t ?x crlf)
+(while (not (= ?d 0)) do
+	(assert (aux (+ ?x ?y)))
+	(bind ?aux(+ ?x ?y))
+	(bind ?x (integer ?y))
+	(bind ?y (integer ?aux))
+
+	(printout t ?x crlf)
+	(bind ?d (- ?d 1))
+	)
+)

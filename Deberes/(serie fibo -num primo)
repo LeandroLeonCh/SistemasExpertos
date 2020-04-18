@@ -1,0 +1,42 @@
+         CLIPS (6.31 6/12/19)
+CLIPS> ;; SERIE FIBONACI
+(deffunction fibo (?d)
+(bind ?x(integer 0))
+(bind ?y(integer 1))
+(printout t ?x crlf)
+(while (not (= ?d 0)) do
+	(assert (aux (+ ?x ?y)))
+	(bind ?aux(+ ?x ?y))
+	(bind ?x (integer ?y))
+	(bind ?y (integer ?aux))
+
+	(printout t ?x crlf)
+	(bind ?d (- ?d 1))
+	)
+)
+CLIPS> (fibo 10)
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+FALSE
+CLIPS> (deffunction primo (?num)
+(bind ?modResult (mod ?num 2))
+(if (= ?modResult  0) then 
+	(printout t ?num ": NO es primo" crlf)
+	else
+	(printout t ?num ": SI es primo" crlf)
+)
+)
+CLIPS> (primo 307)
+307: SI es primo
+CLIPS> (primo 20)
+20: NO es primo
+CLIPS> 

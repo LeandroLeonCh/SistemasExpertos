@@ -1,0 +1,98 @@
+NO EXISTE
+H378
+H016 11
+
+72   83   69	71   67   52
+90   61   82	71   61   10
+78   69   83	69   60
+240  213  234   211  188  62	1148
+
+
+70   62   70	76   53   40
+70   63   76	66   68   7
+88   78   68	68   49
+228  203  214   210  170  47	1072
+				2220	2111
+				-124	-124
+ 				2096	1987	109 LITROS
+
+
+(deffunction fibo(?x)
+
+
+
+www.cs.us.es 
+(while (not (= ?x 0) ) do
+(= ?x 0)
+(printout vt ?x crlf)))
+
+(deffunction fibo(?v)
+(+ ?x 0)
+(printout t ?x ?v crlf))
+
+(deftemplate datos
+(slot x)
+(slot y))
+
+(deffacts valores
+(datos (x 0) (y 1))
+
+(defglobal
+   ?*x* = 0
+?*y* = 1)
+
+(deffunction fibo(?v )
+?y = 1
+(while (not (= ?v 0)) do
+(assert (?y 3))
+(bind ?y (= 1 ?y)
+(printout t ?v " " ?y crlf)
+(bind ?v (- ?v 1))
+)))
+
+(deffunction fibo(?v)
+?y = 3
+(printout t ?y crlf) )
+
+(bind ?y(= ?y 1))
+(assert (aux (+ ?x ?y)))
+
+(deffunction fibo (?d)
+(bind ?x(integer 0))
+(bind ?y(integer 1))
+(printout t ?x crlf)
+(while (not (= ?d 0)) do
+	(assert (aux (+ ?x ?y)))
+	(bind ?aux(+ ?x ?y))
+	(bind ?x (integer ?y))
+	(bind ?y (integer ?aux))
+
+	(printout t ?x crlf)
+	(bind ?d (- ?d 1))
+	)
+)
+
+
+(assert (y (integer 1)))
+
+(bind ?x (= ?x ?y))
+	(bind ?y (= ?y ?aux))
+(bind ?aux (+ ?primero ?d))
+(bind ?x (+ ?x ?d))
+
+(deffunction fibo (?d)
+(bind (?x (create$ 0)))
+(bind ?x(= ?x 0))
+(printout t ?x crlf))
+
+
+(deffunction primo (?num)
+(bind ?modResult (mod ?num 2))
+(if (= ?modResult  0) then 
+	(printout t ?num ": NO es primo" crlf)
+	else
+	(printout t ?num ": SI es primo" crlf)
+)
+)
+https://www.csie.ntu.edu.tw/~sylee/courses/clips/bpg/node12.5.2.13.html
+http://www.uco.es/users/sventura/misc/TutorialCLIPS/OtrosAspectos.htm

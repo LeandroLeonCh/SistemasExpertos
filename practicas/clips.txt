@@ -1,0 +1,27 @@
+LIPS> (defrule regla-refri
+(refrigerador luz on)
+(refrigerador puerta abierta)
+(refrigerador 
+
+(defrule regla-refir
+(refrigerador luz on)
+(refrigerador puerta abierta)
+=>
+(printout t "La comida de dania -Puerta abierta" crlf)
+(assert (refrigerador comida estropeada))
+)
+
+(deffacts refrigerador
+(refrigerador luz on)
+(refrigerador puerta abierta)
+(refrigerador temperatura 12)
+)
+
+(defrule fall-sistema
+(error-de-estado confirmado)
+(or 
+(and (temperatura alta) (valvula cerrada))
+(and (temperatura baja) (valvula abierta))
+)
+=>
+(printout t "El sistema tiene un problema de fluido" crlf))
