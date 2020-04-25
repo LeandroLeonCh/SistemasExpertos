@@ -1,0 +1,131 @@
+(defrule progenitor
+(padre-de ?padre ?hijo)
+(marido-de ?padre ?madre)
+=>
+(assert (progenitor-de ?madre ?hijo))
+)
+
+(defrule esposa
+(marido-de ?hombre ?mujer)
+=>
+(assert (esposa-de ?mujer ?hombre))
+(printout t ?mujer " es la esposa de " ?hombre crlf)
+)
+
+(defrule padre 
+(progenitor-de ?padre ?hijo)
+(hombre ?padre)
+=>
+(assert (padre-de ?padre ?hijo))
+(printout t ?padre " es padre de " ?hijo  crlf)
+)
+
+(defrule madre
+(progenitor-de ?madre ?hijo)
+(mujer ?madre)
+=>
+(assert (madre-de ?madre ?hijo))
+(printout t ?madre " es madre de " ?hijo crlf)
+)
+
+(deffacts inicio
+(hombre Ricardo)
+(mujer Fabiola)
+(progenitor-de Ricardo)
+(marido-de Ricardo Fabiola)
+
+
+(defrule abuelos
+(progenitor-de ?padre ?hijo)
+(progenitor-de ?hijo ?nieto)
+=>
+(assert(abuelos-de ?padre ?nieto))
+)
+
+(defrule abuelo
+(abuelos-de ?padre ?nieto)
+(hombre ?padre)
+=>
+(assert (abuelo-de ?padre ?nieto))
+(printout t ?padre " es abuelo de " ?nieto)
+)
+
+(defrule abuela
+(abuelos-de ?madre ?nieto)
+(mujer ?madre)
+=>
+(assert (abuela-de ?madre  ?nieto))
+(printout t ?madre " es abuela de " ?nieto crlf)
+)
+
+;/////HERMANOS
+
+(defrule hermanos
+(padre-de ?padre ?hijo)
+(padre-de ?padre ?hijo2)
+(test (neq ?hijo ?hijo2))
+=>
+(assert (hermanos ?hijo ?hijo2))
+)
+
+(defrule hermanos-madre 
+(madre-de ?madre ?hijo)
+(madre-de ?madre ?hijo2)
+(test (neq ?hijo ?hijo2))
+=>
+(assert (hermanos ?hijo ?hijo2))
+)
+
+(defrule hermano
+(hermanos ?hijo ?hijo2)
+(mujer ?hijo)
+=>
+(assert (hermana-de ?hijo ?hijo2))
+(printout t ?hijo " eshermana de " ?hijo2 crlf)
+
+
+
+(defrule tios
+(progenitor-de ?padre ?hijo)
+(hermanos ?padre ?hermano)
+=>
+(assert (tios ?hermano ?hijo))
+)
+
+(defrule tia
+(tios ?tia ?sobrino)
+(mujer ?tia)
+=>
+(assert (tia ?tia ?sobrino))
+(printout t ?tia " es tia de " ?sobrino)
+)
+
+LIPS> (defrule sobrino
+(tios ?tios ?sobrino)
+(hombre ?sobrino)
+=>
+(assert (sobrino-de ?sobrino ?tios))
+(printout t ?sobrino " es sobrino de " ?tios crlf)
+))
+
+
+(deffacts inicio
+(hombre Ricardo)
+(mujer Fabiola)
+(hombre Andres)
+(mujer Rosa)
+(mujer Maria)
+(hombre Mario)
+(mujer Irene)
+(hombre David)
+(hombre Alejandro)
+(hombre Luis)
+(hombre Enrique)
+(progenitor-de Ricardo David)
+(progenitor-de Ricardo Alejandro)
+(progenitor-de Ricardo Mario)
+(marido-de Ricardo Fabiola)
+(progenitor-de David Luis)
+(marido-de David Rosa)
+)
+
